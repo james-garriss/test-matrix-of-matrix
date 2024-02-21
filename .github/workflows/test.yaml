@@ -1,0 +1,16 @@
+name: Matrix Test
+on:
+  push:
+jobs:
+  build-matrix:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: powershell
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Matrix
+        run: |
+          $params = Get-Content -Path ./params.txt
+          echo $params
