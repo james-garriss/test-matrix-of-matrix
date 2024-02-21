@@ -14,3 +14,19 @@ jobs:
         run: |
           $params = Get-Content -Path ./params.txt
           echo $params
+          $persons = $params.split("|")
+          foreach ($person in $persons)
+          {
+            $attributes = $person.split(",")
+            foreach ($attribute in $attributes)
+            {
+              # Split the key from the value
+              $keyAndValue = $attribute.split("=")
+              $key = $keyAndValue[0]
+              $value = $keyAndValue[1]
+              if($key.ToLower() -eq "alias")
+              {
+                echo "Testing the following person: $value"
+              }
+            }
+          }
