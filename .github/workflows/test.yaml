@@ -13,7 +13,7 @@ jobs:
       - name: Matrix
         run: |
           $params = Get-Content -Path ./params.txt
-          echo $params
+          $aliases = "["
           $persons = $params.split("|")
           foreach ($person in $persons)
           {
@@ -27,6 +27,11 @@ jobs:
               if($key.ToLower() -eq "alias")
               {
                 echo "Testing the following person: $value"
+                $aliases += '"'
+                $aliases += $value.Trim()
+                $aliases += '",'
               }
             }
           }
+          $aliases += "]"
+          echo $aliases
