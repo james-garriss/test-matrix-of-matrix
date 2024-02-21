@@ -33,5 +33,6 @@ jobs:
               }
             }
           }
+          $aliases = $aliases.Substring(0, $aliases.Length-1)
           $aliases += "]"
           echo $aliases
