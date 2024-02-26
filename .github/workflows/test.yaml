@@ -71,8 +71,7 @@ jobs:
               if($value.ToLower() -eq "${{ matrix.product }}")
               {
                 echo "Testing the following person: $value"
-                echo "First name is: $attribute[1]"
-                echo "Last name is: $attribute[2]"
+                echo "Person is: $person"
               }
             }
           }
