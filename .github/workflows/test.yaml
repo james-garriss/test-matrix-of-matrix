@@ -58,7 +58,21 @@ jobs:
         id: create-matrix-matrix
         run: |
           $params = Get-Content -Path ./params.txt
-          $aliases = "["
           $persons = $params.split("|")
           foreach ($person in $persons)
-          
+          {
+            $attributes = $person.split(",")
+            foreach ($attribute in $attributes)
+            {
+              # Split the key from the value
+              $keyAndValue = $attribute.split("=")
+              $key = $keyAndValue[0]
+              $value = $keyAndValue[1]
+              if($value.ToLower() -eq "${{ matrix.product }}")
+              {
+                echo "Testing the following person: $value"
+                echo "First name is: $attribute[1]"
+                echo "Last name is: $attribute[2]"
+              }
+            }
+          }
