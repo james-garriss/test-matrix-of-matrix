@@ -74,11 +74,11 @@ jobs:
               {
                 $alias = $value
               }
-              elseif($value.ToLower() -eq "first")
+              elseif($key.ToLower() -eq "first")
               {
                 $first = $value
               }
-              elseif($value.ToLower() -eq "last")
+              elseif($key.ToLower() -eq "last")
               {
                 $last = $value
               }
