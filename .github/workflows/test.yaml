@@ -72,7 +72,7 @@ jobs:
               {
                 echo "Testing the following person: $value"
                 echo "Person is: $person"
-                echo "First is: $person[1]
+                echo "First is: $person[1]"
               }
             }
           }
