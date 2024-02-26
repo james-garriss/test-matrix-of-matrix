@@ -75,16 +75,18 @@ jobs:
               {
                 $alias = $value
               }
-              if($value.ToLower() -eq "first")
+              elseif($value.ToLower() -eq "first")
               {
                 $first = $value
               }
-              if($value.ToLower() -eq "last")
+              elseif($value.ToLower() -eq "last")
               {
                 $last = $value
               }
             }
           }
+          echo "Alias is: $alias"
+          echo "${{ matrix.product }}"
           if($alias -eq "${{ matrix.product }}")
           {
             echo "Testing the following person: $value"
