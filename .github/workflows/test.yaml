@@ -54,8 +54,7 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-      - name: Matrix
-        id: create-matrix-matrix
+      - name: Test Product
         run: |
           $params = Get-Content -Path ./params.txt
           $alias = ""
@@ -71,7 +70,7 @@ jobs:
               $keyAndValue = $attribute.split("=")
               $key = $keyAndValue[0]
               $value = $keyAndValue[1]
-              if($value.ToLower() -eq "alias")
+              if($key.ToLower() -eq "alias")
               {
                 $alias = $value
               }
