@@ -40,7 +40,7 @@ jobs:
           echo aliases=$aliases >> $env:GITHUB_OUTPUT
     outputs:
       aliases: ${{ steps.create-matrix.outputs.aliases }}          
-  build-matrix-matrix:
+  test:
     runs-on: windows-latest
     defaults:
       run:
@@ -58,6 +58,9 @@ jobs:
         id: create-matrix-matrix
         run: |
           $params = Get-Content -Path ./params.txt
+          $alias = ""
+          $first = ""
+          $last = ""
           $persons = $params.split("|")
           foreach ($person in $persons)
           {
@@ -68,11 +71,26 @@ jobs:
               $keyAndValue = $attribute.split("=")
               $key = $keyAndValue[0]
               $value = $keyAndValue[1]
-              if($value.ToLower() -eq "${{ matrix.product }}")
+              if($value.ToLower() -eq "alias")
               {
-                echo "Testing the following person: $value"
-                echo "Person is: $person"
-                echo "First is: $person[1]"
+                $alias = $value
+              }
+              if($value.ToLower() -eq "first")
+              {
+                $first = $value
+              }
+              if($value.ToLower() -eq "last")
+              {
+                $last = $value
               }
             }
           }
+          if($alias -eq "${{ matrix.product }}")
+          {
+            echo "Testing the following person: $value"
+            echo "Person is: $person"
+            echo "First is: $first"
+            echo "Last is: $last"
+            echo "Call the test method here..."
+          }
+          
