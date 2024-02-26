@@ -40,3 +40,25 @@ jobs:
           echo aliases=$aliases >> $env:GITHUB_OUTPUT
     outputs:
       aliases: ${{ steps.create-matrix.outputs.aliases }}          
+  build-matrix-matrix:
+    runs-on: windows-latest
+    defaults:
+      run:
+        shell: powershell
+    needs:
+      - build-matrix
+    strategy:
+      fail-fast: false
+      matrix:
+        product: ${{ fromJson(needs.build-matrix.outputs.aliases) }}
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Matrix
+        id: create-matrix-matrix
+        run: |
+          $params = Get-Content -Path ./params.txt
+          $aliases = "["
+          $persons = $params.split("|")
+          foreach ($person in $persons)
+          
