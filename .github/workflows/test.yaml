@@ -86,12 +86,13 @@ jobs:
             }
             if($alias -eq "${{ matrix.product }}")
             {
-              echo "Testing the following person: $value"
+              echo "Testing the following person..."
               echo "Person is: $person"
+              echo "${{ matrix.product }}"
+              echo "Alias is: $alias"
               echo "First is: $first"
               echo "Last is: $last"
               echo "Call the test method here..."
             }
           }
-          echo "Alias is: $alias"
-          echo "${{ matrix.product }}"
+          
