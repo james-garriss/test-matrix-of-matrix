@@ -57,13 +57,13 @@ jobs:
       - name: Test Product
         run: |
           $params = Get-Content -Path ./params.txt
-          $alias = ""
-          $first = ""
-          $last = ""
           $persons = $params.split("|")
           foreach ($person in $persons)
           {
             print($person)
+            $alias = ""
+            $first = ""
+            $last = ""
             $attributes = $person.split(",")
             foreach ($attribute in $attributes)
             {
@@ -84,15 +84,14 @@ jobs:
                 $last = $value
               }
             }
+            if($alias -eq "${{ matrix.product }}")
+            {
+              echo "Testing the following person: $value"
+              echo "Person is: $person"
+              echo "First is: $first"
+              echo "Last is: $last"
+              echo "Call the test method here..."
+            }
           }
           echo "Alias is: $alias"
           echo "${{ matrix.product }}"
-          if($alias -eq "${{ matrix.product }}")
-          {
-            echo "Testing the following person: $value"
-            echo "Person is: $person"
-            echo "First is: $first"
-            echo "Last is: $last"
-            echo "Call the test method here..."
-          }
-          
