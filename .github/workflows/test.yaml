@@ -63,6 +63,7 @@ jobs:
           $persons = $params.split("|")
           foreach ($person in $persons)
           {
+            print($person)
             $attributes = $person.split(",")
             foreach ($attribute in $attributes)
             {
