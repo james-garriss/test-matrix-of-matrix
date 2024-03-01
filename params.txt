@@ -1,1 +1,1 @@
-alias=neighbor,first=John,last=doe|alias=coworker,first=Jane,last=Smith
+alias=neighbor,first=John,last=Doe|alias=coworker,first=Jane,last=Smith
